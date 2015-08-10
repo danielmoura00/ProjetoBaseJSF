@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html 	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+
+<h:head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<meta charset="utf-8" />
+	<meta name="generator" content="Bootply" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, maximum-scale=1" />
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
+	<link rel="stylesheet"
+		href="#{facesContext.externalContext.requestContextPath}/resources/bootstrap/css/bootstrap.min.css" />
+	
+	<link rel="stylesheet"
+		href="#{facesContext.externalContext.requestContextPath}/resources/bootstrap/css/bootstrap-theme.min.css" />
+	
+	<script
+		src="#{facesContext.externalContext.requestContextPath}/resources/js/jquery-2.1.4.js"></script>
+	
+	<script
+		src="#{facesContext.externalContext.requestContextPath}/resources/bootstrap/js/bootstrap.min.js"></script>
+	
+	<link rel="stylesheet"
+		href="#{facesContext.externalContext.requestContextPath}/resources/css/styles.css" />
+	
+	<title><ui:insert name="titulo" /></title>
+
+</h:head>
+<h:body>
+	<!-- header -->
+	<div id="top-nav" class="navbar navbar-inverse navbar-static-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Dashboard</a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown"><a class="dropdown-toggle" role="button"
+						data-toggle="dropdown" href="#"><i
+							class="glyphicon glyphicon-user"></i> Admin <span class="caret"></span></a>
+						<ul id="g-account-menu" class="dropdown-menu" role="menu">
+							<li><a href="#">My Profile</a></li>
+						</ul></li>
+					<li><a href="#"><i class="glyphicon glyphicon-lock"></i>
+							Logout</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- /container -->
+	</div>
+
+	<div class="col-sm-3">
+		<!-- Left column -->
+		<a href="#"><strong><i class="glyphicon glyphicon-wrench"></i>
+				Opcoes</strong></a>
+
+		<hr />
+
+		<h:form>
+			<ul class="nav nav-stacked">
+				
+				<li class="nav-header"> <h:commandLink action="#{menuBean.irHome}"> <i class="glyphicon glyphicon-home"></i>
+						Home  </h:commandLink> </li>
+				
+				<li class="nav-header"><a data-toggle="collapse"
+					data-target="#menu2"> <i class="glyphicon glyphicon-saved"></i>
+						Equipamentos <i class="glyphicon glyphicon-chevron-right"></i></a>
+	
+					<ul class="nav nav-stacked collapse" id="menu2">
+						<li><h:commandLink action="#{menuBean.irCadastroEquipamento}">Cadastrar</h:commandLink></li>
+						<li><h:commandLink action="#{menuBean.irEditarEquipamento}">Editar</h:commandLink></li>
+	
+					</ul></li>
+				<li class="nav-header"><a data-toggle="collapse"
+					data-target="#menu3"> <i class="glyphicon glyphicon-check"></i>Sensores
+						<i class="glyphicon glyphicon-chevron-right"></i></a>
+					<ul class="nav nav-stacked collapse" id="menu3">
+						<li><h:commandLink action="#{menuBean.irCadastroSensor}">Cadastrar</h:commandLink></li>
+						<li><h:commandLink action="#{menuBean.irEditarSensor}">Editar</h:commandLink></li>
+					</ul></li>
+				
+			</ul>
+		</h:form>
+	</div>
+
+
+
+	<div id="conteudo">
+		<div class="col-sm-9">
+			<h:form prependId="false">
+				<ui:insert name="corpo" />
+			</h:form>
+		</div>
+	</div>
+
+</h:body>
+</html>

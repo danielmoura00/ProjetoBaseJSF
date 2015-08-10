@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<ui:composition template="/WEB-INF/templates/layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo">Home page</ui:define>
+
+	<ui:define name="corpo">
+		<h:form>
+			<div class="container">
+				<h3 class="text-muted">Olá, "client name".</h3>
+				<div class="header clearfix">
+					<nav>
+					<ul class="nav nav-pills pull-right">
+						<li class="dropdown"><h:commandLink
+								action="#{menuBean.irHome}">Home</h:commandLink></li>
+						<li><h:commandLink action="#{menuBean.irCadastroEquipamento}">Cadastro
+							equipamento</h:commandLink></li>
+						<li><h:commandLink action="#{menuBean.irCadastroSensor}">Cadastro
+							Sensores</h:commandLink></li>
+						<li><h:commandLink action="#{menuBean.irEditarEquipamento}">Editar
+							equipamentos</h:commandLink></li>
+						<li><h:commandLink action="#{menuBean.irEditarSensor}">Editar
+							sensores</h:commandLink></li>
+					</ul>
+					</nav>
+
+				</div>
+
+
+
+				<div class="jumbotron">
+					<h2>Cadastrar equipamento</h2>
+					<label>Equipamento: </label>
+					<h:inputText id="inputEquipamento"
+						value="#{equipamentoBean.equipamento.nome}" class="form-control" />
+					<h:commandButton value="cadastrar"
+						action="#{equipamentoBean.salvarEquipamento}"
+						styleClass="btn btn-outline btn-primary" />
+
+				</div>
+
+
+			</div>
+
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<ui:composition template="/WEB-INF/templates/layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+	<ui:define name="titulo">Home page</ui:define>
+
+	<ui:define name="corpo">
+
+		<p>
+			<br />
+		</p>
+		<div class="container">
+				<!-- Tab panes -->
+				<div class="tab-content">
+					<div class="tab-pane active" id="daftar">
+						<br />
+						<div class="table-responsive">
+
+							<h1>Gerenciador de equipamentos</h1>
+							<h:dataTable var="equipamento" class="table table-hover"
+								value="#{equipamentoBean.equipamentos}">
+								<h:column>
+									<f:facet name="header">Nome</f:facet>
+									<h:outputText value="#{equipamento.nome}" />
+								</h:column>
+
+								<h:column>
+									<h:commandLink href="">
+										<span class="glyphicon glyphicon-edit"></span> Editar</h:commandLink>
+									<br/>
+									<h:commandLink href="" action="#{equipamentoBean.excluirEquipamento(equipamento)}">
+										<span class="glyphicon glyphicon-trash"></span> Deletar</h:commandLink>
+								</h:column>
+							</h:dataTable>
+						</div>
+					</div>
+				</div>
+		</div>
+
+
+	</ui:define>
+
+</ui:composition>

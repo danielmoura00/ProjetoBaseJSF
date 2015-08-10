@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
+
+<head>
+<title>Create your free account</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<script
+	src="#{facesContext.externalContext.requestContextPath}/resources/bootstrap/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet"
+	href="#{facesContext.externalContext.requestContextPath}/resources/css/singinstyles.css" />
+		
+		
+		
+</head>
+<h:body>
+	<div class="form">
+		<div class="header">
+			<h2>Sign Up</h2>
+		</div>
+		<div class="login">
+			<h:form action="">
+				<ul>
+					<li><span class="un"><i class="fa fa-user"></i></span>
+					<h:inputText value="#{usuarioBean.usuario.email}" required="true"
+							class="text" pt:placeholder="User Name Or Email" /></li>
+					<li><span class="un"><i class="fa fa-user"></i></span>
+					<h:inputText value="#{usuarioBean.usuario.nome}" required="true"
+							class="text" pt:placeholder="Name " /></li>
+					<li><span class="un"><i class="fa fa-lock"></i></span>
+					<h:inputSecret value="#{usuarioBean.usuario.senha}" required="true"
+							class="text" pt:placeholder="User Password" /></li>
+					<li><h:commandButton action="#{usuarioBean.salvar}"
+							value="SING IN" class="btn" /></li>
+
+				</ul>
+			</h:form>
+			
+		</div>
+		<div class="sign">
+			<div class="need">Already have an account?</div>
+			<div class="up">
+				<h:form>
+					<h:commandLink class="active"
+						action="#{menuBean.irLogin}" value="LOGIN" />
+				</h:form>
+			</div>
+
+		</div>
+
+	</div>
+
+</h:body>
+</html>

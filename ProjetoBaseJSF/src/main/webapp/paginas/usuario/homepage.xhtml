@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
+<h:head>
+
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet"
+		href="#{facesContext.externalContext.requestContextPath}/resources/bootstrap/css/bootstrap.min.css" />
+
+	<link rel="stylesheet"
+		href="#{facesContext.externalContext.requestContextPath}/resources/bootstrap/css/bootstrap-theme.min.css" />
+
+	<script
+		src="#{facesContext.externalContext.requestContextPath}/resources/bootstrap/js/bootstrap.min.js"></script>
+
+	<!-- JQuery -->
+	<script
+		src="#{facesContext.externalContext.requestContextPath}/resources/js/jquery-2.1.4.js"></script>
+
+	<!--Jumbolt Theme -->
+	<link rel="stylesheet"
+		href="#{facesContext.externalContext.requestContextPath}/resources/css/jumbotron-narrow.css" />
+
+	<link rel="stylesheet"
+		href="#{facesContext.externalContext.requestContextPath}/resources/js/ie-emulation-modes-warning.js" />
+
+</h:head>
+<body>
+
+	<div class="container">
+		<div class="header clearfix">
+			<nav>
+			<ul class="nav nav-pills pull-right">
+				<li t:role="presentation" class="active"><a
+					href="cadastro.html#">Home</a></li>
+				<li t:role="presentation"><a href="index.html#">Cadastro
+						equipamento</a></li>
+				<li t:role="presentation"><a href="index.html#">Cadastro
+						sensores</a></li>
+			</ul>
+			</nav>
+			<h3 class="text-muted">Olá, "client name".</h3>
+		</div>
+
+		<div class="jumbotron">
+			<h2>Equipamentos cadastrados</h2>
+			<label>Equipamento: </label>
+			<h:selectOneMenu value="#{usuarioBean.equipamentoSelecionado}"
+				id="equipamento" class="form-control">
+				<f:selectItem itemLabel="Selecione" noSelectionOption="true" />
+				<f:selectItems value="#{usuarioBean.getNomeEquipamentos()}" />
+			</h:selectOneMenu>
+
+			<label>Sensor: </label>
+			<h:selectOneMenu value="#{usuarioBean.sensorSelecionado}" id="sensor"
+				class="form-control">
+				<f:selectItem itemLabel="Selecione" noSelectionOption="true" />
+				<f:selectItems value="#{usuarioBean.getNomeSensores()}" />
+			</h:selectOneMenu>
+			<h:commandButton value="ver" action="#{usuarioBean.salvar}"
+				styleClass="btn btn-outline btn-primary" />
+
+		</div>
+
+		<div class="row marketing">
+			<div class="col-lg-6">
+				<h4>Grafico</h4>
+				<p>do lado vai mostrar do gráfico e aqui sua descrição</p>
+
+			</div>
+
+			<div class="col-lg-6">
+				<h4>Aqui vai ficar o gráfico</h4>
+			</div>
+		</div>
+
+	</div>
+	<!-- /container -->
+
+
+	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	<script
+		src="#{facesContext.externalContext.requestContextPath}/resources/bootstrap/js/ie10-viewport-bug-workaround.js"/>
+</body>
+</html>

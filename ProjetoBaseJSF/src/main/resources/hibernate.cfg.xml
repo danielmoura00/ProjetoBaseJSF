@@ -1,0 +1,22 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<property name="show_sql">true</property>
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.format_sql">true</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.username">postgres</property>
+        <property name="hibernate.connection.password">p@g0l@postgres</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://10.7.193.130:5432/treinamento_daniel</property>
+       
+<!--         <property name="hibernate.hbm2ddl.auto">update</property> -->
+        
+        <mapping class="br.com.projetobase.modelo.Usuario"/>
+        <mapping class="br.com.projetobase.modelo.Equipamento"/>
+        <mapping class="br.com.projetobase.modelo.Sensor"/>
+	</session-factory>
+</hibernate-configuration>
