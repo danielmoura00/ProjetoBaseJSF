@@ -37,16 +37,15 @@ public class SensorService implements Serializable {
 	}
 	
 	@Transactional
-	public void editar(String nomeSensor,String novoNome){
-		Sensor sensor = sensoresDAO.buscarPorSensor(nomeSensor);
+	public void editar(Sensor sensor ,String novoNome){
 		sensor.setNome(novoNome);
 		sensoresDAO.atualizar(sensor);
 		
 	}
 	
 	@Transactional
-	public void excluir(String nomeSensor){
-		Sensor sensor = sensoresDAO.buscarPorSensor(nomeSensor);
+	public void excluir(Sensor sensor){
+		
 		sensoresDAO.remover(sensor);
 	}
 	

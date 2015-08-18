@@ -7,6 +7,7 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import br.com.projetobase.arq.modelo.ModeloPersistencia;
 
@@ -18,9 +19,20 @@ public class Sensor extends ModeloPersistencia{
 	@Column(name = "nome", nullable = false)
 	private String nome;
 
-	@ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST})
+	@ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST})
 	@JoinColumn(name="id_equipamento")
 	private Equipamento equipamento;
+	
+	@Transient
+	private boolean isEditable=true;
+
+	public boolean isEditable() {
+		return isEditable;
+	}
+
+	public void setEditable() {
+		this.isEditable = !this.isEditable;
+	}
 	
 	public String getNome() {
 		if(nome!=null){

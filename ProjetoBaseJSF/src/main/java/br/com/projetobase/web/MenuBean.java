@@ -8,14 +8,12 @@ import javax.inject.Named;
 public class MenuBean extends AbstractBean {
 	
 	private static final long serialVersionUID = 1L;
-
-	private String selecioneOption;
 	
-	public String getSelecioneOption() {
-		return "Selecione";
-	}
-	public void setSelecioneOption(String selecioneOption) {
-		this.selecioneOption = selecioneOption;
+	private boolean onEdit;
+	
+	public MenuBean() {
+		this.onEdit = true;
+		
 	}
 
 	public String irCadsatroEquipamento() {
@@ -48,6 +46,14 @@ public class MenuBean extends AbstractBean {
 	
 	public String irEditarSensor(){
 		return navegacaoPaginas.getEditarSensor().construir();
+	}
+	
+	public boolean getOnEdit(){
+		return onEdit;
+	}
+	
+	public void setOnEdit(){
+		onEdit=!onEdit;
 	}
 	
 

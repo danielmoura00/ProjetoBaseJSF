@@ -12,7 +12,8 @@
 	<ui:define name="titulo">Home page</ui:define>
 
 	<ui:define name="corpo">
-					<div class="jumbotron">
+		<h:form>
+			<div class="jumbotron">
 				<h2>Cadastrar Sensor</h2>
 
 				<label>Equipamento: </label>
@@ -20,7 +21,7 @@
 					id="equipamento" class="form-control">
 					<f:selectItem itemLabel="Selecione" noSelectionOption="true" />
 					<f:selectItems value="#{equipamentoBean.getNomeEquipamentos()}" />
-					
+
 				</h:selectOneMenu>
 
 
@@ -30,12 +31,12 @@
 				<h:commandButton value="Salvar" id="salvar"
 					action="#{sensorBean.salvarSensor}"
 					styleClass="btn btn-outline btn-primary" />
-					<h:commandButton value="Excluir" id="excluir"
+				<h:commandButton value="Excluir" id="excluir"
 					action="#{sensorBean.excluirSensor}"
 					styleClass="btn btn-outline btn-primary" />
 
 			</div>
-
+		</h:form>
 	</ui:define>
 
 </ui:composition>

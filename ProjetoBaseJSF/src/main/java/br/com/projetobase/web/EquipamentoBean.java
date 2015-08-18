@@ -73,9 +73,15 @@ public class EquipamentoBean extends AbstractBean {
 		return navegacaoPaginas.getCadastroEquipamento().construir();
 	}
 	
-	public void editarEquipamento() {
-		equipamento.setUsuario(dadosDaSessao.getUsuarioDaSessao());
-		equipamentoService.editar(equipamentoSelecionado, equipamento.getNome());
+	
+	public String miau() {
+		return navegacaoPaginas.getCadastro().construir();
+	}
+	
+	
+	
+	public void editarEquipamento(Equipamento equip) {
+		equipamentoService.editar(equip);
 	}
 	
 	

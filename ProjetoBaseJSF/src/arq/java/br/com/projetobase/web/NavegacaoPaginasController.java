@@ -94,8 +94,8 @@ public class NavegacaoPaginasController {
     private final Pagina FalhaDeLogin = new Pagina("/paginas/FalhaDeLogin");
     private final Pagina CadastroEquipamento = new Pagina("/paginas/equipamento/cadastro");
     private final Pagina CadastroSensor = new Pagina("/paginas/sensor/cadastro");
-    private final Pagina EditarEquipamento = new Pagina("/paginas/equipamento/editar");
-    private final Pagina EditarSensor = new Pagina("/paginas/sensor/editar");
+    private final Pagina EditarEquipamento = new Pagina("/paginas/equipamento/edit");
+    private final Pagina EditarSensor = new Pagina("/paginas/sensor/edit");
 	public Pagina getEditarEquipamento() {
 		return EditarEquipamento;
 	}

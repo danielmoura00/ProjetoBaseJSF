@@ -41,9 +41,7 @@ public class EquipamentoService implements Serializable {
 		}
 	}
 	@Transactional
-	public void editar(String nomeEquipamento,String novoNome){
-		Equipamento equipamento = equipamentoDAO.buscarPorEquipamento(nomeEquipamento);
-		equipamento.setNome(novoNome);
+	public void editar(Equipamento equipamento){
 		equipamentoDAO.atualizar(equipamento);
 		
 	}

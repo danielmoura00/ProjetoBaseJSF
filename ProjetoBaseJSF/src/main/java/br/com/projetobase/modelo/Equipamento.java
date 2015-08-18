@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.transaction.Transactional;
 
 import br.com.projetobase.arq.modelo.ModeloPersistencia;
 
@@ -23,12 +25,23 @@ public class Equipamento extends ModeloPersistencia {
 	@Column(name = "nome", nullable = false)
 	private String nome;
 	
-	@OneToMany(mappedBy="equipamento", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@OneToMany(mappedBy="equipamento", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 	private Collection<Sensor> sensores;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="id_usuario", nullable = true)
 	private Usuario usuario;
+	
+	@Transient
+	private boolean isEditable=true;
+
+	public boolean isEditable() {
+		return isEditable;
+	}
+
+	public void setEditable() {
+		this.isEditable = !this.isEditable;
+	}
 
 	public Equipamento() {
 		this.nome = "";

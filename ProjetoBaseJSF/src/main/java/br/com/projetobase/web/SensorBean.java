@@ -67,12 +67,7 @@ public class SensorBean extends AbstractBean {
 	public List<String> getNomeSensores() {
 		List<String> sensores = Collections.emptyList();
 		if(nomeEquipamento != null) {
-			if(!nomeEquipamento.contains("Selecione")){
-				sensores = sensorService.getNomeSensores(nomeEquipamento);
-			}else {
-				sensores.clear();
-			}			
-		
+				sensores = sensorService.getNomeSensores(nomeEquipamento);		
 		}
 		return sensores; 
 		
@@ -94,14 +89,13 @@ public class SensorBean extends AbstractBean {
 		return navegacaoPaginas.getCadastroSensor().construir();
 	}
 	
-	public String editarSensor(){
-		sensorService.editar(nomeSensor, sensor.getNome());
+	public String editarSensor(Sensor sensorRegistrado){
+		sensorService.editar(sensorRegistrado,sensor.getNome());
 		return navegacaoPaginas.getEditarSensor().construir();
 	}
 	
-	public String excluirSensor(){
-		sensorService.excluir(nomeSensor);
-		return navegacaoPaginas.getEditarSensor().construir();
+	public void excluirSensor(Sensor sensorRecebido){
+		sensorService.excluir(sensorRecebido);
 	}
 	
 	

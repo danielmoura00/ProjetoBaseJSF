@@ -6,58 +6,60 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
 	<ui:define name="titulo">Home page</ui:define>
 
 	<ui:define name="corpo">
 
-		<p>
-			<br />
-		</p>
-		<div class="container">
-			<h:form>
-				<!-- Tab panes -->
-				<div class="tab-content">
-					<div class="tab-pane active" id="daftar">
-						<br />
-						<div class="table-responsive">
+		<h:form id="formContent">
 
-							<h1>Gerenciador de sensores</h1>
+			<h1>Gerenciador de sensores</h1>
 
-							<label>Equipamento: </label>
-							<h:selectOneMenu
-								value="#{equipamentoBean.equipamentoSelecionado}"
-								id="equipamento" class="form-control">
-								<f:selectItem itemLabel="#{menuBean.selecioneOption}"
-									noSelectionOption="true" /> 
-								<f:selectItems value="#{equipamentoBean.getNomeEquipamentos()}" />
-								<f:ajax render="sensor" execute="@form" listener="sensor" />
-							</h:selectOneMenu>
+			<label>Equipamento: </label>
+			<h:selectOneMenu value="#{sensorBean.nomeEquipamento}"
+				id="equipamento" class="form-control">
+				<f:selectItem itemLabel="Selecione" noSelectionOption="true" />
+				<f:selectItems value="#{equipamentoBean.getNomeEquipamentos()}" />
+				<f:ajax event="change" render="formContent" />
+			</h:selectOneMenu>
+			
+			<label>Sensores:</label>
+			<h:dataTable var="sensor" class="table table-hover"
+				value="#{sensorBean.sensores}" id="sensor">
+				<f:ajax event="click" execute="@this" render="@form" />
 
-							<h:dataTable var="sensor" class="table table-hover"
-								value="#{sensorBean.sensores}">
-								<h:column>
-									<f:facet name="header">Nome</f:facet>
-									<h:outputText value="#{sensor.nome}" />
-									
-								</h:column>
-								
-								<h:column>
-									<h:commandLink href="">
-										<span class="glyphicon glyphicon-edit"></span> Editar</h:commandLink>
-									<br />
-									<h:commandLink href="">
-										<span class="glyphicon glyphicon-trash"></span> Deletar</h:commandLink>
-								</h:column>
-							</h:dataTable>
-						</div>
-					</div>
-				</div>
-			</h:form>
-		</div>
+				<h:column>
+					<f:facet name="header">Nome</f:facet>
+					<h:outputText value="#{sensor.nome}" rendered="#{sensor.isEditable}" />
+					<h:inputText value="#{sensor.nome}"
+						rendered="#{!(sensor.isEditable)}" />
+				</h:column>
 
+				<h:column>
+					<!-- comandar um edit -->
+					<h:commandLink>
+						<span class="glyphicon glyphicon-edit" />
+						
+									Ok
+								</h:commandLink>
+					<h:commandLink action="#{sensorBean.editarSensor}">
+						<span class="glyphicon glyphicon-edit" />
+						<f:ajax event="click" execute="@this" render="@form"
+							listener="#{sensor.setIsEditable}" />
+									Editar
+								</h:commandLink>
+					<br />
+					<h:commandLink>
+						<f:ajax event="click" execute="@this" render="@form"
+							listener="#{sensorBean.excluirSensor(sensor)}" />
+						<span class="glyphicon glyphicon-trash" /> Deletar
+								</h:commandLink>
+
+				</h:column>
+
+			</h:dataTable>
+		</h:form>
 
 	</ui:define>
 
